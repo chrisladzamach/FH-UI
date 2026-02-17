@@ -80,6 +80,10 @@ http://localhost:5173
 - Guardado de partida
 
 ---
+<img width="1804" height="1036" alt="image" src="https://github.com/user-attachments/assets/a22d0f65-f94c-4691-bb54-ecdbe7e19661" />
+<img width="1799" height="1038" alt="image" src="https://github.com/user-attachments/assets/b30f9ac4-8e37-405c-bec2-29715609fd13" />
+<img width="1801" height="1038" alt="image" src="https://github.com/user-attachments/assets/9d14b992-58cd-43a8-b798-bbb55e0e57fd" />
+<img width="1800" height="1040" alt="image" src="https://github.com/user-attachments/assets/777714d8-1643-48d3-93cc-ebe7cccb4be2" />
 
 ## 🧠 Autor
 - Ramarak
