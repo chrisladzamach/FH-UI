@@ -17,8 +17,11 @@ const VIEWPORT_HEIGHT = 1028
 const WORLD_WIDTH = MAP_WIDTH * MAP_SCALE
 const WORLD_HEIGHT = MAP_HEIGHT * MAP_SCALE
 
-const PLAYER_HALF_WIDTH = FRAME_WIDTH / 2
-const PLAYER_FEET_HEIGHT = FRAME_HEIGHT
+const PLAYER_SCALE = 1.3
+const PLAYER_WIDTH = FRAME_WIDTH * PLAYER_SCALE
+const PLAYER_HEIGHT = FRAME_HEIGHT * PLAYER_SCALE
+const PLAYER_HALF_WIDTH = PLAYER_WIDTH / 2
+const PLAYER_FEET_HEIGHT = PLAYER_HEIGHT
 
 type Dir = "down" | "right" | "left" | "up"
 
@@ -76,27 +79,12 @@ export const Game1 = () => {
         let { x, y } = p
         let moving = false
 
-        if (keys.current.ArrowDown) {
-          y += speed
-          setDir("down")
-          moving = true
-        }
-        if (keys.current.ArrowUp) {
-          y -= speed
-          setDir("up")
-          moving = true
-        }
-        if (keys.current.ArrowLeft) {
-          x -= speed
-          setDir("left")
-          moving = true
-        }
-        if (keys.current.ArrowRight) {
-          x += speed
-          setDir("right")
-          moving = true
-        }
+        if (keys.current.ArrowDown) { y += speed; setDir("down"); moving = true }
+        if (keys.current.ArrowUp) { y -= speed; setDir("up"); moving = true }
+        if (keys.current.ArrowLeft) { x -= speed; setDir("left"); moving = true }
+        if (keys.current.ArrowRight) { x += speed; setDir("right"); moving = true }
 
+        // ✅ límites CORRECTOS
         x = Math.max(
           PLAYER_HALF_WIDTH,
           Math.min(x, WORLD_WIDTH - PLAYER_HALF_WIDTH)
@@ -124,10 +112,8 @@ export const Game1 = () => {
     return () => cancelAnimationFrame(id)
   }, [])
 
-
   return (
     <div className="w-screen h-screen bg-black flex justify-center items-center">
-
       <div
         style={{
           width: VIEWPORT_WIDTH,
@@ -137,16 +123,14 @@ export const Game1 = () => {
           background: "black",
         }}
       >
-
         <div
           style={{
             position: "absolute",
-            width: MAP_WIDTH * MAP_SCALE,
-            height: MAP_HEIGHT * MAP_SCALE,
+            width: WORLD_WIDTH,
+            height: WORLD_HEIGHT,
             transform: `translate(${-cameraX}px, ${-cameraY}px)`,
           }}
         >
-
           <div
             style={{
               width: "100%",
@@ -165,7 +149,7 @@ export const Game1 = () => {
               top: player.y - FRAME_HEIGHT,
               width: FRAME_WIDTH,
               height: FRAME_HEIGHT,
-              scale: "1.3",
+              scale: PLAYER_SCALE,
               backgroundImage: "url('/img/characters/cahara1-kopio.png')",
               backgroundRepeat: "no-repeat",
               backgroundSize: `${FRAME_WIDTH * 3}px ${FRAME_HEIGHT * 4}px`,
@@ -173,10 +157,8 @@ export const Game1 = () => {
               imageRendering: "pixelated",
             }}
           />
-
         </div>
       </div>
     </div>
   )
-
 }

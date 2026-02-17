@@ -1,73 +1,86 @@
-# React + TypeScript + Vite
+# RPG Prototype – React + Vite + TypeScript (F&H)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Prototipo de videojuego RPG 2D desarrollado con **React, TypeScript y Vite**, inspirado en la ambientación, tono y perspectiva del juego **Fear & Hunger**.
 
-Currently, two official plugins are available:
+El objetivo del proyecto es construir una **base técnica sólida para un RPG 2D** utilizando tecnologías web modernas, con control por teclado, animaciones por spritesheet, cámara centrada en el jugador y límites de mundo correctamente definidos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> ⚠️ Este proyecto es **experimental y educativo**, y **no pretende replicar ni reemplazar** el juego Fear & Hunger. Se utiliza únicamente como **referencia artística y conceptual**.
 
-## React Compiler
+---
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## Tecnologías
 
-## Expanding the ESLint configuration
+- React  
+- Vite  
+- TypeScript  
+- TailwindCSS  
+- requestAnimationFrame (game loop)  
+- Spritesheets (CSS background-position)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Estructura del proyecto
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+public/
+ ├─ img/
+ │   ├─ characters/
+ │   └─ map/
+src/
+ ├─ pages/
+ │   ├─ Menu.tsx
+ │   ├─ NewGame.tsx
+ │   └─ Game1.tsx
+ ├─ hooks/
+ │   └─ useEscBack.ts
+ ├─ App.tsx
+ └─ main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🎮 Controles
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Tecla | Acción |
+|-----|------|
+| ⬆️ ⬇️ ⬅️ ➡️ | Movimiento |
+| Shift + dirección | Correr |
+| Enter | Confirmar |
+| Esc | Volver |
+
+---
+
+##  Mundo y cámara
+
+- El mapa es mayor que el viewport
+- La cámara sigue al jugador sin salirse del mundo
+- El personaje no puede atravesar los límites del mapa
+
+---
+
+## Ejecución
+
+```bash
+npm install
+npm run dev
 ```
+
+Abrir en:  
+http://localhost:5173
+
+---
+
+## 🛠️ Roadmap
+
+- Sistema de colisiones
+- NPCs
+- Diálogos
+- Combate
+- Inventario
+- Guardado de partida
+
+---
+
+## 🧠 Autor
+- Ramarak
+Proyecto personal inspirado en **Fear & Hunger** de Miro Haverinen, desarrollado como base técnica para un RPG 2D en web.
