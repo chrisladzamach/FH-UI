@@ -1,0 +1,7 @@
+.init-view {
+  background-image: url("/img/titles2/title.png");
+  background-size: cover;
+  height: max-content;
+  background-position: center;
+  background-repeat: no-repeat;
+}
